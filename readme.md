@@ -17,7 +17,7 @@ Location: SF
 
 - Using git repositories for collaboration will be important throughout a web developer's career.
 
-- Branches are git's solution for managing different variations of a project, allowing developers to try things out safely or develop different features simultaneously. 
+- Branches are git's solution for managing different variations of a project, allowing developers to try things out safely or develop different features simultaneously.
 
 ### What are the objectives?
 <!-- specific/measurable goal for students to achieve -->
@@ -45,16 +45,32 @@ Branches are incredibly lightweight "movable pointers" that help us as developer
 
 What makes a branch special in git is that we're always on a specific branch. When we commit, the current branch HEAD moves forward to the new commit. Another way to say that is the HEAD always stays at the tip of the branch.
 
-Terminology: HEAD is simply a reference to the current or most recent commit!
+Terminology: HEAD is simply a reference to the current or most recent commit! To view HEAD:
+
+`$ cat .git/HEAD`
+
 
 
 <img src="https://www.atlassian.com/git/images/tutorials/collaborating/using-branches/01.svg" width="70%">
 
+To create a new branch:
 
+ ` $ git checkout -b branch-name`
+ 
+To switch to existing branch: 
 
+ ` $ git checkout branch-name`
+ 
+To view list of all branches in a repo and see which branch you are on at the moment:
 
-
-
+ ` $ git branch`
+ 
+ To delete a branch:
+ 
+ ` $ git branch -D branch-name`
+ 
+ 
+ 
 ###Q. Why is branching an important part of git?
 
 
@@ -74,11 +90,18 @@ Fetching, merging, and pulling are related commands that you will frequently use
 
 [`git fetch`](https://git-scm.com/docs/git-fetch) gets all of the updates from the remote repositories without changing the location of the local HEAD.
 
+
 [`git merge`](https://git-scm.com/docs/git-merge) joins two different places in your development tree. This is frequently used to bring together your changes with the changes you just fetched. If you were on branch `add-auth` and you had just `git fetch`'d updates from the remote, you could then `git merge origin/add-auth`. This would join your changes and the changes that had been made to this branch on origin. You also commonly use merge to pull changes from one branch into another so that your current branch doesn't become out of date while you work.
+
 
 [`git pull`](https://git-scm.com/docs/git-pull) is the combination of fetching and merging to the newly fetched version of the current branch.
 
 ![image](https://cloud.githubusercontent.com/assets/6520345/15020568/663aa804-11d7-11e6-83f6-774e43bc2ea6.png)
+
+
+## What is .gitignore file
+
+
 
 ## Collaboration Workflows
 
@@ -110,7 +133,7 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
  git add index.html README.md
  git commit -m "sets up initial file structure"
  ```
- 
+
 2. Have the same partner create a new repository on GitHub. The repo owner should copy the clone URL for the new repository to their clipboard.
 
 3. Back in the local repository, add the GitHub repository as a new `origin` remote, and push the single commit so far to GitHub:
@@ -119,14 +142,14 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
  git remote add origin <YOUR CLONE URL>
  git push origin master
  ```
- 
-4. On GitHub, check that the first commit is showing in the repository. 
+
+4. On GitHub, check that the first commit is showing in the repository.
 
 #### Collaborate!
 
 4. Now, the repository owner should [add your partner as a collaborator](https://help.github.com/articles/adding-collaborators-to-a-personal-repository/).
 
-3. The collaborator should clone the repository.  The collaborator will not need to fork. 
+3. The collaborator should clone the repository.  The collaborator will not need to fork.
 
 4. Each person is about to change the files, so each person will need to make one new branch in their local repository. Name the branches with different branch names, like `intro` and `authors`:
 
@@ -135,18 +158,18 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
  git branch intro
  git checkout intro
  ```
- 
+
  The collaborator might do:
  ```bash
  git branch authors
  git checkout authors
  ```
- 
- > As a shorthand, the `git checkout -b` command creates and checks out a branch all at once. For example, `git checkout -b intro`. 
 
-5. Each person should now make a change to the `README.md` and to the `index.html` on their own local copy. Add at least 2 lines to each file, then `git add` and `git commit` your changes. 
+ > As a shorthand, the `git checkout -b` command creates and checks out a branch all at once. For example, `git checkout -b intro`.
 
-6. Now, each person should push their work to GitHub **on their branch**. 
+5. Each person should now make a change to the `README.md` and to the `index.html` on their own local copy. Add at least 2 lines to each file, then `git add` and `git commit` your changes.
+
+6. Now, each person should push their work to GitHub **on their branch**.
   ```bash
   git push origin intro
   ```
@@ -159,15 +182,15 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
 
 #### Merge Changes!
 
-1. Choose a pull request to accept first. It shouldn't have any merge conflicts with the master branch, so you can just merge it in on GitHub after your partner has looked over it. 
+1. Choose a pull request to accept first. It shouldn't have any merge conflicts with the master branch, so you can just merge it in on GitHub after your partner has looked over it.
 
 2. The second pull request should be a little more interesting. We hope that we have created at least one merge conflict. You'll know you have a merge conflict if GitHub tells you you "cannot merge automatically."  
 
-3. The person whose commit has a conflict should now [follow the collaborator scenario](https://github.com/SF-WDI-LABS/shared_modules/blob/master/how-to/github-collaboration-workflow.md#collaborator-scenario) starting at step 3 and using their branch name instead of `auth`. Resolve the merge conflicts locally with help from the person who already made changes. Once you've tested that the merged version still looks how you want, commit and push your changes to GitHub. 
+3. The person whose commit has a conflict should now [follow the collaborator scenario](https://github.com/SF-WDI-LABS/shared_modules/blob/master/how-to/github-collaboration-workflow.md#collaborator-scenario) starting at step 3 and using their branch name instead of `auth`. Resolve the merge conflicts locally with help from the person who already made changes. Once you've tested that the merged version still looks how you want, commit and push your changes to GitHub.
 
-4. Have your partner review the change and merge the pull request. 
+4. Have your partner review the change and merge the pull request.
 
-5. Feel free to delete this practice repository from your local machine and from GitHub. 
+5. Feel free to delete this practice repository from your local machine and from GitHub.
 
 ## Talking Points for Teams
 
@@ -177,7 +200,7 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
 
 3. Clearly delineate who's working on what, and keep an updated task list. (Trello is great for this!) Things will go much more smoothly if team members work on features that don't overlap. This is especially important if you're not all working in the physical location. It's not uncommon for wires to get crossed!
 
-4. Don't have multiple team members working on the same feature branch at one time, on different computers. If you're pair programming with someone, only use one computer to avoid having differing code on the same branch. 
+4. Don't have multiple team members working on the same feature branch at one time, on different computers. If you're pair programming with someone, only use one computer to avoid having differing code on the same branch.
 
 5. When merge conflicts arise, it's up to the individual contributor to reseolve them. But work with your team! Follow the steps for [resolving merge conflicts locally](#resolving-merge-conflicts-locally), make sure to delete any merge junk from your code, and then push your cleaned-up branch to GitHub.  
 
@@ -197,6 +220,6 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
   * Think about what you want to achieve.
   * Think about the results you expect before you press enter.
   * Whenever you see/type `git commit`, you can assume some changes have been made and staged.
-* The top row of the Remote section of the [git branching tutorial](http://pcottle.github.io/learnGitBranching/) also covers helpful material for collaborating through Git and GitHub. 
+* The top row of the Remote section of the [git branching tutorial](http://pcottle.github.io/learnGitBranching/) also covers helpful material for collaborating through Git and GitHub.
 * <a href="https://www.codeschool.com/courses/try-git" >Try Git - Code School</a>
 * <a href="https://github.com/Gazler/githug">githug</a>
