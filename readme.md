@@ -99,9 +99,15 @@ Fetching, merging, and pulling are related commands that you will frequently use
 ![image](https://cloud.githubusercontent.com/assets/6520345/15020568/663aa804-11d7-11e6-83f6-774e43bc2ea6.png)
 
 
-## What is .gitignore file
+## .gitignore file
 
+[.gitignore file](https://help.github.com/articles/ignoring-files/) is used when you don't want to keep track of specific files or folders. One good example would be your node_modules folder in node projects. This file is not included by default. You can create if needed using:
 
+`$touch .gitignore`
+
+Then open the file in your text editor and add the name of file or folder you dont want to track. 
+
+Do you know why do we don't want to keep track of node_modules folder in our project when using github?
 
 ## Collaboration Workflows
 
