@@ -208,7 +208,7 @@ What happens if two people on a team change the same file?  Merge conflicts (oft
 
 4. Don't have multiple team members working on the same feature branch at one time, on different computers. If you're pair programming with someone, only use one computer to avoid having differing code on the same branch.
 
-5. When merge conflicts arise, it's up to the individual contributor to reseolve them. But work with your team! Follow the steps for [resolving merge conflicts locally](#resolving-merge-conflicts-locally), make sure to delete any merge junk from your code, and then push your cleaned-up branch to GitHub.  
+5. When merge conflicts arise, it's up to the individual contributor to reseolve them. But work with your team! Follow the steps for [resolving merge conflicts locally](https://github.com/SF-WDI-LABS/shared_modules/blob/master/how-to/github-collaboration-workflow.md#resolving-merge-conflicts-locally), make sure to delete any merge junk from your code, and then push your cleaned-up branch to GitHub.  
 
 
 ## Resources
